@@ -1,7 +1,1 @@
-{# Identention in this file is important #}
-
-.. {{ obj.type }}:: {{ obj.name }}
-
-   {{ obj.docstring|indent(3) }}
-
-
+    .. js:attribute:: {{ obj.name }}

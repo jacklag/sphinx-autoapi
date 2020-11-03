@@ -10,7 +10,7 @@
 
    {% for item in obj.children|sort %}
    /autoapi/{{ item.pathname }}/index
-   {%- endfor %}
+   {% endfor %}
 
 {% endif %}
 
@@ -38,13 +38,14 @@
 {%- for obj_item in obj.item_map.get(item_type, []) %}
 {% macro render() %}{{ obj_item.render() }}{% endmacro %}
 
-	{{ render()|indent(4) }}
+{{ render()|indent(0) }}
 
 {%- endfor %}
 {%- endmacro %}
 
 {%- for item_type in obj.item_map.keys() %}
 {% if item_type.lower() != 'module' %}
+xxxxxxxxxxxxxxxx
 {{ display_type(item_type) }}
 {% endif %}
 {%- endfor %}

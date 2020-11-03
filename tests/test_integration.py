@@ -39,7 +39,7 @@ class LanguageIntegrationTests(unittest.TestCase):
         with sphinx_build(test_dir):
             with io.open(test_file, encoding="utf8") as fin:
                 text = fin.read().strip()
-                self.assertIn(test_string, text)
+                self.assertIn(test_string, str(text))
 
 
 class JavaScriptTests(LanguageIntegrationTests):
@@ -49,9 +49,7 @@ class JavaScriptTests(LanguageIntegrationTests):
     @patch("autoapi.mappers.javascript.JavaScriptSphinxMapper.read_file", _js_read)
     def test_integration(self):
         self._run_test(
-            "jsexample",
-            "_build/text/autoapi/Circle/index.txt",
-            "Creates an instance of Circle",
+            "jsexample", "_build/text/autoapi/index.txt", "mixy",
         )
 
 

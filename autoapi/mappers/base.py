@@ -126,7 +126,7 @@ class PythonMapperBase(object):
         * Substitute hyphens for non-word characters
         * Break up the string as paths
         """
-        slug = self.name
+        slug = str(self.name)
         slug = unidecode.unidecode(slug)
         slug = slug.replace("-", "")
         slug = re.sub(r"[^\w\.]+", "-", slug).strip("-")
@@ -295,7 +295,7 @@ class SphinxMapperBase(object):
             self.paths.items(),
             bold("[AutoAPI] ") + "Mapping Data... ",
             length=len(self.paths),
-            stringify_func=(lambda x: x[0]),
+            stringify_func=(lambda x: str(x[0])),
         ):
             for obj in self.create_class(data, options=options):
                 self.add_object(obj)
@@ -314,7 +314,7 @@ class SphinxMapperBase(object):
             bold("[AutoAPI] ") + "Rendering Data... ",
             length=len(self.objects),
             verbosity="INFO",
-            stringify_func=(lambda x: x[0]),
+            stringify_func=(lambda x: str(x[0])),
         ):
             rst = obj.render()
             if not rst:
